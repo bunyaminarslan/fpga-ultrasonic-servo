@@ -1,0 +1,42 @@
+module vga_controller(
+    input pin_sysclk,
+    output pin_vga_red1,
+    output pin_vga_green1,
+    output pin_vga_blue1,
+    output pin_vga_hsync_n,
+    output pin_vga_vsync_n,
+    input start,
+    output pin_trig,
+    input pin_echo,
+    output servo_control
+);
+
+// Sinyallerin tanımlanması
+reg sysClk;
+reg ball_red;
+reg ball_green;
+reg ball_blue;
+reg clk_25mhz = 0;
+reg [9:0] vga_pixel_row;
+reg [9:0] vga_pixel_column;
+reg vga_vert_sync_out;
+reg vga_horizantal_sync_out;
+integer distance_v = 0;
+reg [7:0] sensor_location;
+
+//// VGA senkronizasyon modülü tanımı (başka bir modül olduğunu varsayıyoruz)
+//vga_sync VGA_DRIVER (
+//    .clock_25Mhz(sysClk),       // VGA için 25MHz osilatör frekansı
+//    .red(ball_red),
+//    .green(ball_green),
+//    .blue(ball_blue),
+//    .red_out(pin_vga_red1),     // pin red
+//    .green_out(pin_vga_green1), // pin green
+//    .blue_out(pin_vga_blue1),   // pin blue
+//    .horiz_sync_out(vga_horizantal_sync_out), // yatay senkronizasyon
+//    .vert_sync_out(vga_vert_sync_out),       // dikey senkronizasyon
+//    .pixel_row(vga_pixel_row),
+//    .pixel_column(vga_pixel_column)
+//);
+
+endmodule
